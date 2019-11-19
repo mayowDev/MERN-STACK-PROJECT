@@ -1,0 +1,70 @@
+============Learn the MERN Stack - Full Tutorial (MongoDB, Express, React, Node.js)========
+
+--MongoDB Database Concepts
+
+.collection instead of table
+.document instead of row
+.$lookup instead of join
+.reference instead of foreign key
+
+--MongoDB Documents = Binary Json Format(BSON)
+
+.mongodb stores in desk as BSON so it supports variaty of dataTypes(strings,integrs),nesting documents 
+ there are document modals that allows storing data in arrays 
+
+--MongoDB Atlas cluster
+ .create project>cluster>google cloud >free tier
+ .security setup and ip whitelist
+ .connect cluster/mongodb
+
+---------------------------------------Code Time------------------------
+11min
+.node -v
+.npx i create-react-app .
+.mkdir backend =this creates new folder
+
+--Dev dependencies
+.mkdir backend , then npm init -y
+
+.npm install express cors mongoose dotenv
+.cors= croross origin resource sharing, is what allows ajax to skip the same-origin policy and acccess resources from remote host. it also provides express middleware.
+.mongoose =integrates mongoDb to nodejs
+.dotenv is allows to store variables into server,rather than local server
+.npm install -g nodemon or sudo install -g nodemon
+.nodeman watches our nodejs app when it happens some updates it will re-start
+
+------15min = Creating Server
+.sever.js in backend folder
+.nodemon server =runs our server
+
+-------------------------------17min connetc into mongodb through mongoose&mondodbAtlas --------------
+
+.uri =is databse uri we have to get from mongodb Atlas dashbord
+.connect mangoose to uri
+.mongoDb nodejs re-wrote the tool it uses to parse mongodb connecttion string 
+so when dealing with updates of mongDb put these two flags { useNewUrlParser: true, useCreateIndex: true }
+.to work the connection string /uri  we have to set enviroment variable
+.copy connection string only from your cluster and past in .env file
+
+------ 21min = Database Schema setup with mongoose 
+.create models folder in backend then create exercise.model.js and user.model.js
+
+---- -----------------------------27min Routes setup------------------------------
+
+.in server.js require our routes then use. 
+ E.g: const RouterA= require('file path'); app.use("/endpointName",RouterA)
+
+.create Add API endpoint routes, so server can be used to perform the crud operation
+.create users.js and exercises.js as our rotes 
+.in each route require express.Router() and model we creating rout for.
+E.g: const router =require("express").Router(); let User=require('../models/user.model');
+
+--Actions
+router.route('path').get((req,res)=>{User.find().then(users=>res.json(users)).catch(err=>res.status(400).json('error:'+err));})
+
+//40 mins code is working 
+.we add mongoose methods to update and delete exercise
+-findById() and findByIdAndDelete() == these are mongoose methods
+
+//45 mins he used post method to update instead of put
+//51 min React stop
